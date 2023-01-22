@@ -10,6 +10,16 @@ body {
   font-family: "montserrat", sans-serif;
 }
 
+#date, #hours {
+  display: inline-table;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+}
+
+.fa-clock, .fa-calendar-days {
+  font-size: larger;
+  padding-right: 0.4rem;
+}
+
 #greeting .title {
   display: flex;
 }
@@ -85,8 +95,4 @@ ul li li:nth-child(even) {
 
 li:hover {
   cursor: pointer;
-}
-
-#date {
-  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
 }/*# sourceMappingURL=styles.css.map */
