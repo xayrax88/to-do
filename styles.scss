@@ -14,6 +14,15 @@ body {
 	box-sizing: border-box;
 	font-family: 'montserrat', sans-serif;
 }
+
+#date, #hours {
+    display: inline-table;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    }
+.fa-clock, .fa-calendar-days{
+    font-size: larger;
+    padding-right: .4rem;
+}
 #greeting {
 	.title {
 		display: flex;
@@ -97,6 +106,4 @@ li {
 	}
 }
 
-#date {
-font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-}
+

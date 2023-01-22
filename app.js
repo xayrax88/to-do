@@ -58,7 +58,7 @@ $(document).ready(function () {
         $("#list-todos").html(html);
     }
 
-
+    //click event for input
     $("#add-todo-form").submit(function (e) {
         e.preventDefault(); // Prevents the default behavior!
         var name = $("#todo-task").val();
@@ -70,8 +70,53 @@ $(document).ready(function () {
 
 
 
+    //Display Date
+    function displayDate() {
+        let date = new Date()
+        date = date.toString().split(" ")
+        document.querySelector("#date").innerHTML = date[1] + " " + date[2] + " " + date[3]
+        //console.log(date)
+    }
+
+    window.onload = function () {
+        displayDate();
+    }
 
 
 
+    //Display Time
+    function displayTime() {
+        var date = new Date();
+        var h = ('0' + date.getHours()).slice(-2);
+        var m = ('0' + date.getMinutes()).slice(-2);
+        var s = ('0' + date.getSeconds()).slice(-2);
+
+        var time = h + ":" + m + ":" + s;
+        $('#hours').text(time);
+    }
+
+    displayTime();
+    setInterval(displayTime, 1000)
+
+
+    //Codes for testing purposes
+
+    //Delete Todos
+    //    $("li").click(function () {
+    //     $(this).parent().fadeOut(500, function () {
+
+    //     });
+    //     e.stopPropagation();
+    // });
+
+
+    // addNewTodo("Groceries"); //0
+    // addNewTodo("Finish coding project"); //1
+    // addNewTodo("Find a nice job"); //2
+    // addNewTodo("Go out on dates"); //3
+    // listTodos();
+    // console.log("******");
+    // removeTodo(1);
+    // listTodos();
 
 });
