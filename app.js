@@ -23,6 +23,22 @@ $(document).ready(function () {
         return todos[index];
     }
 
+    //Save data to localStorage
+    function saveTodos() {
+        var str = JSON.stringify(todos);
+        localStorage.setItem("todos", str);
+    }
+
+
+    //Get data from localStorage
+    function getTodos() {
+        var str = localStorage.getItem("todos");
+        todos = JSON.parse(str);
+        if (!todos) {
+            todos = [];
+        }
+    }
+
 
 
 
