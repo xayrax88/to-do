@@ -48,11 +48,8 @@ $(document).ready(function () {
     function listTodos() {
         var html = "";
         for (var i in todos) {
-            //console.log(todos[i].name);
             var todo = todos[i];
             var task = todo.task;
-            //            var completed = todo.completed;
-            //            html += "<li>" + task + " <span>" + completed + "</span></li>";
             html += "<li>" + task + "</li>";
         }
         $("#list-todos").html(html);
@@ -64,7 +61,6 @@ $(document).ready(function () {
         var name = $("#todo-task").val();
         // validate...
         addNewTodo(name);
-        //        addNewTodo(task);
         listTodos();
     });
 
@@ -74,7 +70,7 @@ $(document).ready(function () {
     function displayDate() {
         let date = new Date()
         date = date.toString().split(" ")
-        document.querySelector("#date").innerHTML = date[1] + " " + date[2] + " " + date[3]
+        $("#date").html(date[1] + " " + date[2] + " " + date[3]);
         //console.log(date)
     }
 
