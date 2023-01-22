@@ -1,12 +1,34 @@
-:root {
-	--primary: blue;
-	--business: #3a82ee;
-	--personal: var(--primary);
-	--light: #EEE;
-	--grey: #888;
-	--dark: #313154;
-	--danger: #ff5b57;
-	--shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-	--business-glow: 0px 0px 4px rgba(58, 130, 238, 0.75);
-	--personal-glow: 0px 0px 4px rgba(234, 64, 164, 0.75);
+//Color Variables
+$p-color: black;
+$p-color2: whitesmoke;
+$p-color3: white;
+$p-color4: grey;
+
+body {
+	background-color: $p-color;
+	margin-top: 150px;
+}
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'montserrat', sans-serif;
+}
+#greeting {
+	.title {
+		display: flex;
+	input {
+			margin-left: 0.5rem;
+	flex: 1 1 0%;
+	min-width: 0;
+}
+}
+}
+#greeting .title, 
+#greeting .title input {
+	color: black;
+	font-size: 1.5rem;
+	font-weight: 700;
+	border-radius: .5rem;
+	border-color: $p-color2;
 }
