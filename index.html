@@ -27,17 +27,20 @@
 </head>
 
 <body>
-    <!-- Greeting -->
+    <!-- Greeting section-->
     <div class="container" id="greeting">
-        <h1><span id="date"></span></h1>
-        <h2 class="title">
+        <h1><i class="fa-regular fa-calendar-days"></i><span id="date"></span></h1>
+        <i class="fa-regular fa-clock"></i>
+        <h2 id="hours"></h2>
+        <h3 class="title">
             Hello, <input type="text" id="name" placeholder="Name here" />
-        </h2>
+        </h3>
     </div>
-
+    <!-- Greeting section ends -->
+    <!-- To-Do List Main -->
     <div class="container">
-        <h2>To-Do List</h2>
-        <p><b><i>Double click to delete an item & drag to reorder</i></b></p>
+        <h2 class="text-center">To-Do List</h2>
+        <p class="text-center"><b><i>Add your tasks here</i></b></p>
         <form id="add-todo-form" name="todo">
             <p>
                 <input id="todo-task" type="text" placeholder="e.g. Get some milk" />
@@ -50,6 +53,8 @@
         </form>
         <ul id="list-todos"></ul>
     </div>
+    <!-- To-Do List Main Ends -->
+
     <script src="/app.js"></script>
 
 </body>
