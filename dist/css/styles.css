@@ -26,4 +26,67 @@ body {
   font-weight: 700;
   border-radius: 0.5rem;
   border-color: whitesmoke;
+}
+
+.container {
+  width: 300px;
+  background-color: white;
+  border-radius: 0.5rem;
+  box-shadow: 5px 5px 15px 3px whitesmoke;
+}
+
+form {
+  display: inline-block;
+}
+
+input {
+  align-content: center;
+  padding: 4px 15px 4px 5px;
+  position: relative;
+  border-radius: 0.5rem;
+  box-shadow: 5px 5px 15px 3px whitesmoke;
+}
+
+#btn {
+  display: inline-block;
+  color: whitesmoke;
+  background-color: grey;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  text-align: center;
+  margin-top: 2px;
+  padding: 5px 15px;
+  align-items: center;
+}
+
+:hover {
+  cursor: pointer;
+  opacity: 1;
+}
+
+ul {
+  padding-left: 20px;
+  font-weight: bolder;
+}
+ul li {
+  padding: 5px;
+  color: black;
+  font-weight: bolder;
+}
+ul li li:nth-child(even) {
+  background-color: grey;
+  color: whitesmoke;
+  font-weight: bolder;
+}
+
+.strike {
+  text-decoration: line-through;
+}
+
+li:hover {
+  cursor: pointer;
+}
+
+#date {
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
 }/*# sourceMappingURL=styles.css.map */
