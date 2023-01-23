@@ -1,6 +1,7 @@
 $(document).ready(function () {
 
     var todos = [];
+
     function Todo(task) {
         this.task = task;
     }
@@ -80,13 +81,12 @@ $(document).ready(function () {
 
 
 
-    //Display Time
+    //Display Time (24hrs)
     function displayTime() {
         var date = new Date();
         var h = ('0' + date.getHours()).slice(-2);
         var m = ('0' + date.getMinutes()).slice(-2);
         var s = ('0' + date.getSeconds()).slice(-2);
-
         var time = h + ":" + m + ":" + s;
         $('#hours').text(time);
     }
