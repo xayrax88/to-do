@@ -21,18 +21,13 @@ $(document).ready(function () {
         setTodosToLs(updatedList)
     }
 
-    //Get Todo
-    function getTodo(index) {
-        return todos[index];
-    }
-
     //Save data to localStorage
     function setTodosToLs(todosList) {
         const stringifyTodosList = JSON.stringify(todosList)
         localStorage.setItem('todos', stringifyTodosList)
     }
 
-    //get all todos from localStorage
+    //Get all todos from localStorage
     function getAllTodosFromLs() {
         return JSON.parse(localStorage.getItem('todos') || '[]')
     }
@@ -43,9 +38,10 @@ $(document).ready(function () {
         if (allTodos.length === 0) {
             return
         }
+
         allTodos.forEach(
             (item, index) => {
-                const newTodoHtml = $(`<li id="li-${item.id}">${item.task}<button id="btn-${item.id}">Remove</button></li>`)
+                const newTodoHtml = $(`<li id="li-${item.id}">${item.task}<button id="btn-${item.id}" class="btn btn-dark">Remove</button></li>`)
                 $("#list-todos").append(newTodoHtml)
                 $("#btn-" + item.id).on("click", function () {
                     $(this).parent().remove()
@@ -56,7 +52,7 @@ $(document).ready(function () {
     }
     loadUi();
 
-    //updated task 
+    //Updated task 
     function updateTaskById(id, updatedTask) {
         const allTodos = getAllTodosFromLs()
         const updatedList = allTodos.map(td => {
@@ -92,7 +88,7 @@ $(document).ready(function () {
         const myId = generateId()
         const inputText = $("#todo-task").val()
         console.log(inputText)
-        const newTodoHtml = $(`<li id="li-${myId}">${inputText}<button id="btn-${myId}">Remove</button></li>`)
+        const newTodoHtml = $(`<li id="li-${myId}">${inputText}<button class="btn btn-dark" id="btn-${myId}">Remove</button></li>`)
         $("#list-todos").append(newTodoHtml)
         addNewTask(inputText)
         $("#btn-" + myId).on("click", function () {
@@ -129,24 +125,5 @@ $(document).ready(function () {
     displayTime();
     setInterval(displayTime, 1000)
 
-
-
-    //Delete Todos
-    //    $("li").click(function () {
-    //     $(this).parent().fadeOut(500, function () {
-
-    //     });
-    //     e.stopPropagation();
-    // });
-
-
-    // addNewTodo("Groceries"); //0
-    // addNewTodo("Finish coding project"); //1
-    // addNewTodo("Find a nice job"); //2
-    // addNewTodo("Go out on dates"); //3
-    // listTodos();
-    // console.log("******");
-    // removeTodo(1);
-    // listTodos();
 
 });
