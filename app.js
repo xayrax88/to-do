@@ -1,22 +1,24 @@
 $(document).ready(function () {
 
     var todos = [];
-
     function Todo(task) {
         this.task = task;
+        this.id = generateId;
     }
 
-    //Add new Todo
-    function addNewTodo(task) {
-        var t = new Todo(task);
-        todos.push(t);
-        saveTodos();
+    //Adding a new task
+    function addNewTask(task) {
+        const allTodos = getAllTodosFromLs()
+        allTodos.push(new Todo(task))
+        setTodosToLs(allTodos)
+
     }
 
-    //Remove Todo
-    function removeTodo(index) {
-        todos.splice(index, 1);
-        saveTodos();
+    //Remove Task
+    function removeTaskById(receiveId) {
+        const allTodos = getAllTodosFromLs()
+        const updatedList = allTodos.filter(td => td.id !== receiveId)
+        setTodosToLs(updatedList)
     }
 
     //Get Todo
@@ -25,52 +27,85 @@ $(document).ready(function () {
     }
 
     //Save data to localStorage
-    function saveTodos() {
-        var str = JSON.stringify(todos);
-        localStorage.setItem("todos", str);
+    function setTodosToLs(todosList) {
+        const stringifyTodosList = JSON.stringify(todosList)
+        localStorage.setItem('todos', stringifyTodosList)
     }
 
-
-    //Get data from localStorage
-    function getTodos() {
-        var str = localStorage.getItem("todos");
-        todos = JSON.parse(str);
-        if (!todos) {
-            todos = [];
-        }
+    //get all todos from localStorage
+    function getAllTodosFromLs() {
+        return JSON.parse(localStorage.getItem('todos') || '[]')
     }
-
-    //Initialize todo app
-    getTodos();
-    listTodos();
-
 
     //List Todos
-    function listTodos() {
-        var html = "";
-        for (var i in todos) {
-            var todo = todos[i];
-            var task = todo.task;
-            html += "<li>" + task + "</li>";
+    function loadUi() {
+        const allTodos = getAllTodosFromLs()
+        if (allTodos.length === 0) {
+            return
         }
-        $("#list-todos").html(html);
+        allTodos.forEach(
+            (item, index) => {
+                const newTodoHtml = $(`<li id="li-${item.id}">${item.task}<button id="btn-${item.id}">Remove</button></li>`)
+                $("#list-todos").append(newTodoHtml)
+                $("#btn-" + item.id).on("click", function () {
+                    $(this).parent().remove()
+                    removeTaskById(item.id)
+                })
+            }
+        )
+    }
+    loadUi();
+
+    //updated task 
+    function updateTaskById(id, updatedTask) {
+        const allTodos = getAllTodosFromLs()
+        const updatedList = allTodos.map(td => {
+            if (
+                td.id === id
+            ) {
+                td.task = updatedTask
+                return td
+            }
+            return td
+        })
+        setTodosToLs(updatedList)
     }
 
-    //click event for input
-    $("#add-todo-form").submit(function (e) {
-        e.preventDefault(); // Prevents the default behavior!
-        var name = $("#todo-task").val();
-        // validate...
-        addNewTodo(name);
-        listTodos();
-    });
+    function getById(id) {
+        const allTodos = getAllTodosFromLs()
+        return allTodos.find(td => td.id === id)
+    }
+
+    function generateId() {
+        const allTodos = getAllTodosFromLs()
+        return allTodos.length
+    }
+
+    document.addNewTask = addNewTask
+    document.removeTaskById = removeTaskById
+    document.updateTaskById = updateTaskById
+    document.getById = getById
 
 
+    //Input button functionality
+    $("#btn").on("click", function () {
+        const myId = generateId()
+        const inputText = $("#todo-task").val()
+        console.log(inputText)
+        const newTodoHtml = $(`<li id="li-${myId}">${inputText}<button id="btn-${myId}">Remove</button></li>`)
+        $("#list-todos").append(newTodoHtml)
+        addNewTask(inputText)
+        $("#btn-" + myId).on("click", function () {
+            $(this).parent().remove()
+            removeTaskById(myId)
+        })
+    })
 
     //Display Date
     function displayDate() {
         let date = new Date()
         date = date.toString().split(" ")
+        //document.querySelector("#date").innerHTML = date[1] + " " + date[2] + " " + date[3]
         $("#date").html(date[1] + " " + date[2] + " " + date[3]);
         //console.log(date)
     }
@@ -80,13 +115,13 @@ $(document).ready(function () {
     }
 
 
-
-    //Display Time (24hrs)
+    //Display Time
     function displayTime() {
         var date = new Date();
         var h = ('0' + date.getHours()).slice(-2);
         var m = ('0' + date.getMinutes()).slice(-2);
         var s = ('0' + date.getSeconds()).slice(-2);
+
         var time = h + ":" + m + ":" + s;
         $('#hours').text(time);
     }
@@ -95,7 +130,6 @@ $(document).ready(function () {
     setInterval(displayTime, 1000)
 
 
-    //Codes for testing purposes
 
     //Delete Todos
     //    $("li").click(function () {

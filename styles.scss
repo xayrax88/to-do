@@ -16,10 +16,11 @@ body {
 }
 
 #date, #hours {
-    display: inline-table;
+display: inline-table;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     }
 .fa-clock, .fa-calendar-days{
+
     font-size: larger;
     padding-right: .4rem;
 }
@@ -42,7 +43,10 @@ body {
 	border-color: $p-color2;
 }
 .container {
+	// padding: 20px;
 	width: 300px;
+	// margin: 0 auto;
+	// margin-top: 40px;
 	background-color: $p-color3;
 	border-radius: .5rem;
 	box-shadow: 5px 5px 15px 3px $p-color2;
@@ -56,6 +60,9 @@ input {
 	position: relative;
 	border-radius: .5rem;
 	box-shadow: 5px 5px 15px 3px $p-color2;
+}
+#btn-{
+    border-radius: .5rem;
 }
 
 //+Add button
